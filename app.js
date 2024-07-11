@@ -3,6 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import winston from './winston.js'; 
+import usersRouter from './routes/users/users_controlador.js'
 const app = express();
 
 const appServer = {
@@ -13,9 +14,9 @@ const appServer = {
         app.use(bodyParser.json());
 
         // aquí añadimos las rutas de api
+        app.use('/users', usersRouter);
 
 
-        
         app.use((error, res) => {
             res.status(error.status || 500);
             res.json({
