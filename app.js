@@ -3,7 +3,8 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import winston from './winston.js'; 
-import usersRouter from './routes/users/users_controlador.js'
+import usersRouter from './routes/users/users_controlador.js';
+
 const app = express();
 
 const appServer = {
@@ -16,8 +17,8 @@ const appServer = {
         // aquí añadimos las rutas de api
         app.use('/users', usersRouter);
 
-
-        app.use((error, res) => {
+        // Middleware de manejo de errores
+        app.use((error, req, res, next) => { // Agregando "req" y "next" para middleware de errores
             res.status(error.status || 500);
             res.json({
                 error: {
@@ -28,11 +29,11 @@ const appServer = {
     },
 
     launchServer: () => {
-        winston.info('servidor launched');
+        winston.info('servidor lanzado');
         const port = process.env.PORT || 8080;
         winston.info(`Server eventpulse listens at port ${port}`);
         // El servidor comienza a escuchar las solicitudes entrantes
-        const server = app.listen(port, () => { });
+        app.listen(port, () => { });
     }
 };
 
