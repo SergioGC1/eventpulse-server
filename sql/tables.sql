@@ -1,4 +1,5 @@
-
+CREATE DATABASE `eventpulse` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `eventpulse`;
 CREATE TABLE Eventos (
     IdEvento INT PRIMARY KEY AUTO_INCREMENT,
     IdUsuario INT,
