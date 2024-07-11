@@ -4,6 +4,7 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import winston from './winston.js'; 
 import usersRouter from './routes/users/users_controlador.js';
+import loginRouter from './routes/login/login_controlador.js'
 
 const app = express();
 
@@ -16,7 +17,7 @@ const appServer = {
 
         // aquí añadimos las rutas de api
         app.use('/api/users', usersRouter);
-
+        app.use('/api/login', loginRouter);
         // Middleware de manejo de errores
         app.use((error, req, res, next) => { // Agregando "req" y "next" para middleware de errores
             res.status(error.status || 500);
