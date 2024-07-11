@@ -4,7 +4,7 @@ import usersMysql from './users_mysql.js'; // Asegúrate de que la extensión .j
 const router = express.Router();
 
 const reglasUsuario = [
-    body('email').notEmpty().isEmail()
+    body('Email').notEmpty().isEmail()
 ];
 
 const reglasUsuarioId = [
@@ -23,9 +23,9 @@ router.post('/', reglasUsuario, async (req, res, next) => {
             res.status(400).send({ errors: result.array() });
             return;
         }
-        let usuario = req.body;
-        usuario = await usersMysql.postUsuarios(usuario);
-        res.json(usuario);
+        let user = req.body;
+        user = await usersMysql.postUsuarios(user);
+        res.json(user);
     } catch (error) {
         next(error);
     }

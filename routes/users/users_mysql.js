@@ -9,9 +9,8 @@ const usersMysql = {
             conn = await mysql.createConnection(cfg)
             const [resp] = await conn.query('INSERT INTO Usuarios SET ?', user)
             await conn.end()
-            usuario.usuarioId = resp.insertId
+            user.Id = resp.insertId
             return user
-            
         } catch (error) {
             if (conn) await conn.end()
             throw(error)
@@ -25,7 +24,6 @@ const usersMysql = {
             const [resp] = await conn.query("SELECT * FROM Usuarios")
             await conn.end()
             return resp
-            
         } catch (error) {
             if (conn) await conn.end()
             throw(error)
@@ -36,11 +34,10 @@ const usersMysql = {
         try {
             let cfg = mysqlConnection.getConection()
             conn = await mysql.createConnection(cfg)
-            let sql = `select * from Usuarios where Id = ${usuarioId}`
+            let sql = `select * from Usuarios where Id = ${Id}`
             const [resp] = await conn.query(sql)
             await conn.end()
             return resp
-            
         } catch (error) {
             if (conn) await conn.end()
             throw(error)
@@ -52,7 +49,7 @@ const usersMysql = {
             let cfg = mysqlConnection.getConection()
             conn = await mysql.createConnection(cfg)
             let sql = `UPDATE Usuarios SET ? WHERE Id = ?`
-            const [resp] = await conn.query(sql, [usuario, usuario.usuarioId])
+            const [resp] = await conn.query(sql, [usuario, usuario.Id])
             await conn.end()
             return resp
             
@@ -64,13 +61,12 @@ const usersMysql = {
     deleteUsuarioById: async(usuarioId) => {
         let conn = undefined
         try {
-            let cfg = mysqlConnection.obtenerConexion()
+            let cfg = mysqlConnection.getConection()
             conn = await mysql.createConnection(cfg)
-            let sql = `DELETE FROM usuarios WHERE usuarioId= ${usuarioId}`
+            let sql = `DELETE FROM Usuarios WHERE Id= ${usuarioId}`
             const [resp] = await conn.query(sql)
             await conn.end()
             return resp
-            
         } catch (error) {
             if (conn) await conn.end()
             throw(error)
