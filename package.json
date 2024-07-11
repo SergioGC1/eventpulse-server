@@ -1,0 +1,22 @@
+{
+  "name": "eventpulse",
+  "version": "1.0.0",
+  "description": "This is backend aplication for eventpulse",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "app-root-path": "^3.1.0",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mysql2": "^3.10.2",
+    "nodemon": "^3.1.4",
+    "winston": "^3.13.0"
+  }
+}
