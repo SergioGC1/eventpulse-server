@@ -15,7 +15,7 @@ const appServer = {
         app.use(bodyParser.json());
 
         // aquí añadimos las rutas de api
-        app.use('/users', usersRouter);
+        app.use('/api/users', usersRouter);
 
         // Middleware de manejo de errores
         app.use((error, req, res, next) => { // Agregando "req" y "next" para middleware de errores

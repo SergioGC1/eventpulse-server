@@ -20,7 +20,7 @@ const usersMysql = {
     getUsuariosMsql: async () => {
         let conn = undefined
         try {
-            let cfg = mysqlConnection.obtenerConexion()
+            let cfg = mysqlConnection.getConection()
             conn = await mysql.createConnection(cfg)
             const [resp] = await conn.query("SELECT * FROM Usuarios")
             await conn.end()
@@ -34,7 +34,7 @@ const usersMysql = {
     getUsuarioById: async(usuarioId) => {
         let conn = undefined
         try {
-            let cfg = mysqlConnection.obtenerConexion()
+            let cfg = mysqlConnection.getConection()
             conn = await mysql.createConnection(cfg)
             let sql = `select * from Usuarios where Id = ${usuarioId}`
             const [resp] = await conn.query(sql)
@@ -49,7 +49,7 @@ const usersMysql = {
     putUsuariosMsql: async(usuario) => {
         let conn = undefined
         try {
-            let cfg = mysqlConnection.obtenerConexion()
+            let cfg = mysqlConnection.getConection()
             conn = await mysql.createConnection(cfg)
             let sql = `UPDATE Usuarios SET ? WHERE Id = ?`
             const [resp] = await conn.query(sql, [usuario, usuario.usuarioId])

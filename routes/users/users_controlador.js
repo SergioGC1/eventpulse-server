@@ -25,7 +25,7 @@ router.post('/', reglasUsuario, async (req, res, next) => {
         }
         let usuario = req.body;
         usuario = await usersMysql.postUsuarios(usuario);
-        res.json(usuario);     
+        res.json(usuario);
     } catch (error) {
         next(error);
     }
