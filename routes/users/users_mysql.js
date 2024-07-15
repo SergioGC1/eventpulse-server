@@ -34,7 +34,7 @@ const usersMysql = {
         try {
             let cfg = mysqlConnection.getConection()
             conn = await mysql.createConnection(cfg)
-            let sql = `select * from Usuarios where Id = ${Id}`
+            let sql = `select * from Usuarios where Id = ${usuarioId}`
             const [resp] = await conn.query(sql)
             await conn.end()
             return resp
